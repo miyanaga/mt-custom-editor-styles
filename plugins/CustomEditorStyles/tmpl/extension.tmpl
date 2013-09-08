@@ -1,0 +1,28 @@
+<mtapp:HasCustomEditorStyles>
+<mt:SetVarBlock name="js_include" append="1">
+<script type="text/javascript">
+/* <![CDATA[ */
+  (function() {
+    var config = MT.Editor.TinyMCE.config;
+
+    if ( !config.plugins.match(/,?template,?/) )
+      config.plusins += ',template';
+
+    var b2 = config.plugin_mt_wysiwyg_buttons2;
+    if ( b2.match(/,?formatselect,?/) ) {
+<mtapp:IfCustomEditorStylesWithDefaults>
+      config.plugin_mt_wysiwyg_buttons2 = b2.replace(/(,?)formatselect(,?)/, '$1formatselect,|,styleselect$2');
+<mt:else>
+      config.plugin_mt_wysiwyg_buttons2 = b2.replace(/(,?)formatselect(,?)/, '$1styleselect$2');
+</mtapp:IfCustomEditorStylesWithDefaults>
+    } else {
+      config.plugin_mt_wysiwyg_buttons2 += ',|,styleselect';
+    }
+
+    config.style_formats = <mtapp:CustomEditorStyles value="styles">;
+
+  })();
+/* ]]> */
+</script>
+</mt:SetVarBlock>
+</mtapp:HasCustomEditorStyles>

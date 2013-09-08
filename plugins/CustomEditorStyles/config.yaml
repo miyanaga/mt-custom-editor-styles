@@ -1,0 +1,55 @@
+id: CustomEditorStyles
+name: CustomEditorStyles
+version: 1.00
+author_link: http://www.ideamans.com/
+author_name: ideaman's Inc.
+description: <__trans phrase="Makes TinyMCE editor customizable.">
+l10n_class: MT::CustomEditorStyles::L10N
+
+custom_editor_styles_plugin: option.yaml
+
+# Put option.yaml like this, to disable entry cfg screen extension.
+
+# setting_gui: 0
+
+# Register to registry to define theme specific styles.
+
+# custom_theme_styles:
+#   THEME_ID:
+#     show_default_formats: 0
+#     styles:
+#       -
+#         title: Headline2
+#         block: h2
+#         classes: my-class
+#       -
+#         title: Headline3
+#         block: h3
+#         classes: my-class
+
+settings:
+    show_default_formats:
+    show_theme_styles:
+      Default: 1
+    json:
+      Default: ''
+
+editors:
+    tinymce:
+        extension: extension.tmpl
+
+tags:
+    function:
+        app:CustomEditorStyles: $CustomEditorStyles::MT::CustomEditorStyles::Plugin::hdlr_CustomEditorStyles
+    block:
+        app:HasCustomEditorStyles?: $CustomEditorStyles::MT::CustomEditorStyles::Plugin::hdlr_HasCustomEditorStyles
+        app:IfCustomEditorStylesWithDefaults?: $CustomEditorStyles::MT::CustomEditorStyles::Plugin::hdlr_IfCustomEditorStylesWithDefaults
+
+applications:
+    cms:
+        callbacks:
+            template_param.cfg_entry: $CustomEditorStyles::MT::CustomEditorStyles::Plugin::template_param_cfg_entry
+            cms_save_filter.blog: $CustomEditorStyles::MT::CustomEditorStyles::Plugin::cms_save_filter_blog
+            cms_save_filter.website: $CustomEditorStyles::MT::CustomEditorStyles::Plugin::cms_save_filter_blog
+            cms_post_save.blog: $CustomEditorStyles::MT::CustomEditorStyles::Plugin::post_save_blog
+            cms_post_save.website: $CustomEditorStyles::MT::CustomEditorStyles::Plugin::post_save_blog

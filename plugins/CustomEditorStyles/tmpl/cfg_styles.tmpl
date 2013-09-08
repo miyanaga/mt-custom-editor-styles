@@ -1,0 +1,61 @@
+<__trans_section component="CustomEditorStyles">
+
+<mtapp:setting
+  id="custom-editor-styles-show-default-formats"
+  label="<__trans phrase="Default Formats Pulldown">"
+  show_hint="1"
+  hint="<__trans phrase='Select show or hide standard formats pulldown shows Headlines, paragraph and pre.'>">
+
+<label>
+  <input type="radio" name="custom_editor_styles_show_default_formats" value="1" id="custom-editor-styles-show-default-formats-show"<mt:if name="custom_editor_styles_show_default_formats"> checked="checked"</mt:if>>
+  <__trans phrase="Show">
+</label>
+<label>
+  <input type="radio" name="custom_editor_styles_show_default_formats" value="0" id="custom-editor-styles-show-default-formats-hide"<mt:unless name="custom_editor_styles_show_default_formats"> checked="checked"</mt:unless>>
+  <__trans phrase="Hide">
+</label>
+
+</mtapp:setting>
+
+<mtapp:setting
+  id="custom-editor-styles-show-theme-style"
+  label="<__trans phrase="Theme Styles Pulldown">"
+  show_hint="1"
+  hint="<__trans phrase='Select show or hide theme defined styles pulldown.'>">
+
+<label>
+  <input type="radio" name="custom_editor_styles_show_theme_styles" value="1" id="custom-editor-styles-show-theme-styles-show"<mt:if name="custom_editor_styles_show_theme_styles"> checked="checked"</mt:if>>
+  <__trans phrase="Show">
+</label>
+<label>
+  <input type="radio" name="custom_editor_styles_show_theme_styles" value="0" id="custom-editor-styles-show-theme-styles-hide"<mt:unless name="custom_editor_styles_show_theme_styles"> checked="checked"</mt:unless>>
+  <__trans phrase="Hide">
+</label>
+
+</mtapp:setting>
+
+<mtapp:setting
+  id="custom-editor-styles-json"
+  label="<__trans phrase="Custom Styles">"
+  show_hint="1"
+  hint="<__trans phrase='Keys of name and tag are required.'> <__trans phrase='Default type is block.'>">
+
+<textarea name="custom_editor_styles_json" id="custom-editor-styles-json" class="text high"><mt:var name="custom_editor_styles_json" escape="html"></textarea>
+
+<style type="text/css">
+.custom-editor-styles-example {
+  width: 75%;
+}
+</style>
+<h3><__trans phrase="Example"></h3>
+<pre class="custom-editor-styles-example">
+[
+  { "title": "<__trans phrase='Headline1'>", "block": "h1" },
+  { "title": "<__trans phrase='Strong'>", "inline": "strong" },
+  { "title": "<__trans phrase='Strong with class'>", "inline": "strong", "classes": "type-2" }
+]
+</pre>
+
+</mtapp:setting>
+
+</__trans_section>
