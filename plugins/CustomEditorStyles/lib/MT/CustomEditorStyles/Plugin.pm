@@ -111,7 +111,9 @@ sub theme_styles {
     my $theme = $blog->theme;
 
     my $values = MT->registry('custom_theme_styles', $theme->id)
-        or return;
+        || ( $theme->{elements} && $theme->{elements}->{custom_editor_styles} )
+        || return;
+
     return unless ref $values eq 'HASH';
 
     my $styles = $values->{styles} or return;
@@ -133,9 +135,6 @@ sub theme_styles {
 
 sub styles_with_default_formats {
     my ( $blog ) = @_;
-
-    use Data::Dumper;
-    print STDERR Dumper($blog);
 
     my $scope = 'blog:' . $blog->id;
     my %config;
